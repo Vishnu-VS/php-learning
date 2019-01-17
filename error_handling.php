@@ -3,7 +3,7 @@
     function customError($errno,$errstr){
         echo "<b>Error:</b>[$errno] $errstr <br>";
         echo "Ending script";
-        die();
+        die(); 
     }
 
     //set error handler
