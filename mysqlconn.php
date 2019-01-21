@@ -14,19 +14,15 @@
     echo "Connected succesfully";
 
     //create table
-    $sql="CREATE TABLE MyGuests(
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        firstname VARCHAR(30) NOT NULL,
-        lastname VARCHAR(30) NOT NULL,
-        email VARCHAR(50),
-        reg_date TIMESTAMP
-        )";
+    $sql="INSERT INTO MyGuests (firstname,lastname,email)
+    VALUES ('Jane','Doe','jane@example.com');";//each statement seperated by semicolon except last one
 
-    if($conn->query($sql)===TRUE){
-        echo "Table MyGuests created succesfully";
-    }else{
-        echo "Error creating tables ".$conn->error;
-    } 
-
+    $sql.="INSERT INTO MyGuests (firstname,lastname,email)
+    VALUES ('Jamie','Doe','jamie@example.com')";
+    
+    $conn->multi_query($sql);
+    
+    $last_id=$conn->insert_id;
+    echo $last_id;
     $conn->close();
 ?>
