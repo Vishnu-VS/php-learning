@@ -12,12 +12,12 @@
         die("Connection failed: ".$conn->connect_error);
     }
 
-    $sql="DELETE FROM MyGuests WHERE id=3";
+    $sql="UPDATE MyGuests SET lastname='Doe' WHERE id=2";
 
     if($conn->query($sql)===TRUE){
-        echo "Record deleted succesfully";
+        echo "Record updated succesfully";
     }else{
-        echo("Error deleting record".$onn->error);
+        echo("Error updating record".$conn->error);
     }
 
     $conn->close();
