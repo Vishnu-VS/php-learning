@@ -12,16 +12,13 @@
         die("Connection failed: ".$conn->connect_error);
     }
 
-    $sql="SELECT id,firstname,lastname FROM MyGuests";
-    $result=$conn->query($sql);
+    $sql="DELETE FROM MyGuests WHERE id=3";
 
-    if($result->num_rows>0){
-        //output each row
-        while($row=$result->fetch_assoc()){
-            echo "id: ".$row["id"]." -Name: ".$row["firstname"]." ".$row["lastname"]."<br>";
-        }
+    if($conn->query($sql)===TRUE){
+        echo "Record deleted succesfully";
     }else{
-        echo "0 results";
+        echo("Error deleting record".$onn->error);
     }
+
     $conn->close();
 ?>
